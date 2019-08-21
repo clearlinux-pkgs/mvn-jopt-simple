@@ -4,19 +4,23 @@
 #
 Name     : mvn-jopt-simple
 Version  : 5.0.2
-Release  : 1
+Release  : 2
 URL      : https://github.com/jopt-simple/jopt-simple/archive/jopt-simple-5.0.2.tar.gz
 Source0  : https://github.com/jopt-simple/jopt-simple/archive/jopt-simple-5.0.2.tar.gz
-Source1  : https://repo1.maven.org/maven2/net/sf/jopt-simple/jopt-simple/3.2/jopt-simple-3.2.jar
-Source2  : https://repo1.maven.org/maven2/net/sf/jopt-simple/jopt-simple/3.2/jopt-simple-3.2.pom
-Source3  : https://repo1.maven.org/maven2/net/sf/jopt-simple/jopt-simple/5.0.2/jopt-simple-5.0.2.jar
-Source4  : https://repo1.maven.org/maven2/net/sf/jopt-simple/jopt-simple/5.0.2/jopt-simple-5.0.2.pom
-Source5  : https://repo1.maven.org/maven2/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.jar
-Source6  : https://repo1.maven.org/maven2/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.pom
+Source1  : https://repo.maven.apache.org/maven2/net/sf/jopt-simple/jopt-simple/4.6/jopt-simple-4.6-sources.jar
+Source2  : https://repo.maven.apache.org/maven2/net/sf/jopt-simple/jopt-simple/4.6/jopt-simple-4.6.jar
+Source3  : https://repo.maven.apache.org/maven2/net/sf/jopt-simple/jopt-simple/4.6/jopt-simple-4.6.pom
+Source4  : https://repo1.maven.org/maven2/net/sf/jopt-simple/jopt-simple/3.2/jopt-simple-3.2.jar
+Source5  : https://repo1.maven.org/maven2/net/sf/jopt-simple/jopt-simple/3.2/jopt-simple-3.2.pom
+Source6  : https://repo1.maven.org/maven2/net/sf/jopt-simple/jopt-simple/5.0.2/jopt-simple-5.0.2.jar
+Source7  : https://repo1.maven.org/maven2/net/sf/jopt-simple/jopt-simple/5.0.2/jopt-simple-5.0.2.pom
+Source8  : https://repo1.maven.org/maven2/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.jar
+Source9  : https://repo1.maven.org/maven2/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.pom
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : MIT
 Requires: mvn-jopt-simple-data = %{version}-%{release}
+Requires: mvn-jopt-simple-license = %{version}-%{release}
 
 %description
 [![Build Status](https://travis-ci.org/pholser/jopt-simple.svg?branch=master)](https://travis-ci.org/pholser/jopt-simple)
@@ -29,28 +33,48 @@ Group: Data
 data components for the mvn-jopt-simple package.
 
 
+%package license
+Summary: license components for the mvn-jopt-simple package.
+Group: Default
+
+%description license
+license components for the mvn-jopt-simple package.
+
+
 %prep
+%setup -q -n jopt-simple-jopt-simple-5.0.2
 
 %build
 
 %install
-mkdir -p %{buildroot}/usr/share/java/.m2/repository/net/sf/jopt-simple/jopt-simple/3.2
-cp %{SOURCE1} %{buildroot}/usr/share/java/.m2/repository/net/sf/jopt-simple/jopt-simple/3.2/jopt-simple-3.2.jar
+mkdir -p %{buildroot}/usr/share/package-licenses/mvn-jopt-simple
+cp LICENSE.txt %{buildroot}/usr/share/package-licenses/mvn-jopt-simple/LICENSE.txt
+mkdir -p %{buildroot}/usr/share/java/.m2/repository/net/sf/jopt-simple/jopt-simple/4.6
+cp %{SOURCE1} %{buildroot}/usr/share/java/.m2/repository/net/sf/jopt-simple/jopt-simple/4.6/jopt-simple-4.6-sources.jar
+
+mkdir -p %{buildroot}/usr/share/java/.m2/repository/net/sf/jopt-simple/jopt-simple/4.6
+cp %{SOURCE2} %{buildroot}/usr/share/java/.m2/repository/net/sf/jopt-simple/jopt-simple/4.6/jopt-simple-4.6.jar
+
+mkdir -p %{buildroot}/usr/share/java/.m2/repository/net/sf/jopt-simple/jopt-simple/4.6
+cp %{SOURCE3} %{buildroot}/usr/share/java/.m2/repository/net/sf/jopt-simple/jopt-simple/4.6/jopt-simple-4.6.pom
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/net/sf/jopt-simple/jopt-simple/3.2
-cp %{SOURCE2} %{buildroot}/usr/share/java/.m2/repository/net/sf/jopt-simple/jopt-simple/3.2/jopt-simple-3.2.pom
+cp %{SOURCE4} %{buildroot}/usr/share/java/.m2/repository/net/sf/jopt-simple/jopt-simple/3.2/jopt-simple-3.2.jar
+
+mkdir -p %{buildroot}/usr/share/java/.m2/repository/net/sf/jopt-simple/jopt-simple/3.2
+cp %{SOURCE5} %{buildroot}/usr/share/java/.m2/repository/net/sf/jopt-simple/jopt-simple/3.2/jopt-simple-3.2.pom
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/net/sf/jopt-simple/jopt-simple/5.0.2
-cp %{SOURCE3} %{buildroot}/usr/share/java/.m2/repository/net/sf/jopt-simple/jopt-simple/5.0.2/jopt-simple-5.0.2.jar
+cp %{SOURCE6} %{buildroot}/usr/share/java/.m2/repository/net/sf/jopt-simple/jopt-simple/5.0.2/jopt-simple-5.0.2.jar
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/net/sf/jopt-simple/jopt-simple/5.0.2
-cp %{SOURCE4} %{buildroot}/usr/share/java/.m2/repository/net/sf/jopt-simple/jopt-simple/5.0.2/jopt-simple-5.0.2.pom
+cp %{SOURCE7} %{buildroot}/usr/share/java/.m2/repository/net/sf/jopt-simple/jopt-simple/5.0.2/jopt-simple-5.0.2.pom
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/net/sf/jopt-simple/jopt-simple/5.0.4
-cp %{SOURCE5} %{buildroot}/usr/share/java/.m2/repository/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.jar
+cp %{SOURCE8} %{buildroot}/usr/share/java/.m2/repository/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.jar
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/net/sf/jopt-simple/jopt-simple/5.0.4
-cp %{SOURCE6} %{buildroot}/usr/share/java/.m2/repository/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.pom
+cp %{SOURCE9} %{buildroot}/usr/share/java/.m2/repository/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.pom
 
 
 %files
@@ -60,7 +84,14 @@ cp %{SOURCE6} %{buildroot}/usr/share/java/.m2/repository/net/sf/jopt-simple/jopt
 %defattr(-,root,root,-)
 /usr/share/java/.m2/repository/net/sf/jopt-simple/jopt-simple/3.2/jopt-simple-3.2.jar
 /usr/share/java/.m2/repository/net/sf/jopt-simple/jopt-simple/3.2/jopt-simple-3.2.pom
+/usr/share/java/.m2/repository/net/sf/jopt-simple/jopt-simple/4.6/jopt-simple-4.6-sources.jar
+/usr/share/java/.m2/repository/net/sf/jopt-simple/jopt-simple/4.6/jopt-simple-4.6.jar
+/usr/share/java/.m2/repository/net/sf/jopt-simple/jopt-simple/4.6/jopt-simple-4.6.pom
 /usr/share/java/.m2/repository/net/sf/jopt-simple/jopt-simple/5.0.2/jopt-simple-5.0.2.jar
 /usr/share/java/.m2/repository/net/sf/jopt-simple/jopt-simple/5.0.2/jopt-simple-5.0.2.pom
 /usr/share/java/.m2/repository/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.jar
 /usr/share/java/.m2/repository/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.pom
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/mvn-jopt-simple/LICENSE.txt
