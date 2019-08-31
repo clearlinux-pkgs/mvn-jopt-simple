@@ -4,7 +4,7 @@
 #
 Name     : mvn-jopt-simple
 Version  : 5.0.2
-Release  : 3
+Release  : 4
 URL      : https://github.com/jopt-simple/jopt-simple/archive/jopt-simple-5.0.2.tar.gz
 Source0  : https://github.com/jopt-simple/jopt-simple/archive/jopt-simple-5.0.2.tar.gz
 Source1  : https://repo.maven.apache.org/maven2/net/sf/jopt-simple/jopt-simple/4.6/jopt-simple-4.6-sources.jar
